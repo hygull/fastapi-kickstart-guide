@@ -1,28 +1,34 @@
 # fastapi-kickstart-guide
 A repository which contains beautiful notes and steps which can help beginners of FastAPI to kickstart with the FastAPI very faster. It contains bunch of beautiful examples, learning notes, references etc. Images have been attached too. The README.md will help any newbies to FastAPI learn the things faster and better.
 
-# Cloning Github project and dependencies installation in the virtualenv
+## List of contents
+
+1. [Cloning Github project and dependencies installation in the virtualenv](http://localhost:6419/#cloning-github-project-and-dependencies-installation-in-the-virtualenv)
+2. 
+
+
+### Cloning Github project and dependencies installation in the virtualenv
 
 ```bash
-ip-172-16-0-62:prod hygull$ git clone https://github.com/hygull/fastapi-kickstart-guide.git
+ip-172-16-0-62:FastAPI_Projects hygull$ git clone https://github.com/hygull/fastapi-kickstart-guide.git
 Cloning into 'fastapi-kickstart-guide'...
 remote: Enumerating objects: 5, done.
 remote: Counting objects: 100% (5/5), done.
 remote: Compressing objects: 100% (5/5), done.
 remote: Total 5 (delta 0), reused 0 (delta 0), pack-reused 0
 Receiving objects: 100% (5/5), done.
-ip-172-16-0-62:prod hygull$ 
+ip-172-16-0-62:FastAPI_Projects hygull$ 
 ```
 
 ```bash
-ip-172-16-0-62:prod hygull$ cd fastapi-kickstart-guide/
+ip-172-16-0-62:FastAPI_Projects hygull$ cd fastapi-kickstart-guide/
 ip-172-16-0-62:fastapi-kickstart-guide hygull$ 
 ```
 
-```
+```bash
 ip-172-16-0-62:fastapi-kickstart-guide hygull$ python3.11 -m virtualenv ../venv-fastapi-kickstart
 created virtual environment CPython3.11.2.final.0-64 in 588ms
-  creator CPython3Posix(dest=/Users/hygull/Projects/Python/Django/AIPALETTE/FORESIGHT_ENGINE_PROJ/prod/venv-fastapi-kickstart, clear=False, no_vcs_ignore=False, global=False)
+  creator CPython3Posix(dest=/Users/hygull/Projects/Python/Django/AIPALETTE/FORESIGHT_ENGINE_PROJ/FastAPI_Projects/venv-fastapi-kickstart, clear=False, no_vcs_ignore=False, global=False)
   seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=/Users/hygull/Library/Application Support/virtualenv)
     added seed packages: pip==23.3.2, setuptools==69.0.3, wheel==0.42.0
   activators BashActivator,CShellActivator,FishActivator,NushellActivator,PowerShellActivator,PythonActivator
@@ -72,12 +78,49 @@ Successfully installed annotated-types-0.6.0 anyio-4.2.0 click-8.1.7 fastapi-0.1
 (venv-fastapi-kickstart) ip-172-16-0-62:fastapi-kickstart-guide hygull$ 
 ```
 
-```
+```bash
 (venv-fastapi-kickstart) ip-172-16-0-62:fastapi-kickstart-guide hygull$ ls
 LICENSE		README.md
 (venv-fastapi-kickstart) ip-172-16-0-62:fastapi-kickstart-guide hygull$ pip freeze > requirements.txt
 (venv-fastapi-kickstart) ip-172-16-0-62:fastapi-kickstart-guide hygull$ 
 (venv-fastapi-kickstart) ip-172-16-0-62:fastapi-kickstart-guide hygull$ ls
 LICENSE			README.md		requirements.txt
+(venv-fastapi-kickstart) ip-172-16-0-62:fastapi-kickstart-guide hygull$ 
+```
+
+```bash
+(venv-fastapi-kickstart) ip-172-16-0-62:fastapi-kickstart-guide hygull$ git commit -m "dependencies installations in virtualenv & README.md modifications with steps"
+[main 1318f9b] dependencies installations in virtualenv & README.md modifications with steps
+ 2 files changed, 93 insertions(+)
+ create mode 100644 requirements.txt
+(venv-fastapi-kickstart) ip-172-16-0-62:fastapi-kickstart-guide hygull$ git push
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 1.95 KiB | 1.95 MiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/hygull/fastapi-kickstart-guide.git
+   c186903..1318f9b  main -> main
+(venv-fastapi-kickstart) ip-172-16-0-62:fastapi-kickstart-guide hygull$ 
+```
+
+```bash
+(venv-fastapi-kickstart) ip-172-16-0-62:fastapi-kickstart-guide hygull$ git commit -m "dependencies installations in virtualenv & README.md modifications with steps"
+[main 1318f9b] dependencies installations in virtualenv & README.md modifications with steps
+ 2 files changed, 93 insertions(+)
+ create mode 100644 requirements.txt
+```
+
+```bash
+(venv-fastapi-kickstart) ip-172-16-0-62:fastapi-kickstart-guide hygull$ git push
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 1.95 KiB | 1.95 MiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/hygull/fastapi-kickstart-guide.git
+   c186903..1318f9b  main -> main
 (venv-fastapi-kickstart) ip-172-16-0-62:fastapi-kickstart-guide hygull$ 
 ```
