@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
 
 
 app = FastAPI()
@@ -46,8 +47,6 @@ def hello_programmers(
     }
 
 
-from fastapi import FastAPI, HTTPException
-
 @app.get('/validate')
 def validate_integer_numbers(
         number: str
@@ -59,3 +58,21 @@ def validate_integer_numbers(
         } 
     except Exception as error:
         raise HTTPException(status_code=400, detail=f"{number} is a invalid number of {type(number)} -> {error}")
+
+
+class User(BaseModel):
+    first_name: str
+    last_name: str
+    full_name: str = ''
+    username: str
+    age: int
+    city: str
+
+
+@app.post("/users/create/")
+def create_user(
+        user: User
+    ):
+    user.full_name = f"{user.first_name} {user.last_name}"
+    return user
+
