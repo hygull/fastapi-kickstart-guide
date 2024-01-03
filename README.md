@@ -8,7 +8,7 @@ A repository which contains beautiful notes and steps which can help beginners o
 
 ---
 
-> Create `main.py` with below code snippet
+**Create `main.py` with below code snippet**
 
 ```python
 from fastapi import FastAPI
@@ -25,8 +25,9 @@ def hello_programmers():
 ```
 ---
 
-> Run the app server 
-> By default it runs on port 8000 (Here I am running on a custom port 9000)
+> **Run the app server**
+>
+> By default it runs on port `8000` (Here I am running on a custom port `9000`)
 
 `uvicorn main:app --reload --port 9000`
 
@@ -34,7 +35,7 @@ def hello_programmers():
 
 ---
 
-> Query Parameters
+**Query Parameters**
 
 ```python
 from fastapi import FastAPI
@@ -57,16 +58,16 @@ def hello_programmers(
     }
 ```
 
-Query Parameters
+-> Query Parameters
 
 ![Query Parameters Example](./resources/images/02_postman_query_parameters_example.png)
 
-Required Query Parameters (Automatic validations)
+-> Required Query Parameters (Automatic validations)
 ![Required Query Parameters Example](./resources/images/03_required_query_parameters.png)
 
 ---
 
-Query Parameters with default values
+**Query Parameters with default values**
 
 ```python
 from fastapi import FastAPI
@@ -93,11 +94,13 @@ def hello_programmers(
     }
 ```
 
+-> Query parameters with default values
+
 ![Query parameters with default values](./resources/images/04_query_parameters_with_default_values.png)
 
 ---
 
-Handing Exceptions
+**Handing Exceptions**
 
 ```python
 from fastapi import FastAPI, HTTPException
@@ -118,7 +121,7 @@ def validate_integer_numbers(
         raise HTTPException(status_code=400, detail=f"{number} is a invalid number of {type(number)} -> {error}")
 ```
 
-Handing Exceptions - valid response 
+-> Handing Exceptions - valid response 
 
 ![Handing Exceptions v1](./resources/images/05_handing_exceptions_1.png)
 ---
@@ -127,7 +130,7 @@ Handing Exceptions - Invalid response
 
 ---
 
-Pydantic Model for Input validation
+**Pydantic Model for Input validation**
 
 ```python
 from fastapi import FastAPI
@@ -149,10 +152,16 @@ def create_user(
     user.full_name = f"{user.first_name} {user.last_name}"
     return user
 ```
+-> 2 fields are missing in the POST body
 
-![Example 1](./resources/images/pydantic_model_input_validation_1.png)
-![Example 2](./resources/images/pydantic_model_input_validation_2.png)
-![Example 3](./resources/images/pydantic_model_input_validation_3.png)
+![Pydanctic Model for input validation v1](./resources/images/pydantic_model_input_validation_1.png)
+
+-> 1 field is missing in the POST body
+
+![Pydanctic Model for input validation v2](./resources/images/pydantic_model_input_validation_2.png)
+
+-> All fields are being passed in the POST body
+![Pydanctic Model for input validation v3](./resources/images/pydantic_model_input_validation_3.png)
 
 ---
 
