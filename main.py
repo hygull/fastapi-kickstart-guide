@@ -57,7 +57,7 @@ def validate_integer_numbers(
             "message": f"{number} is a valid number of {type(number)}"
         } 
     except Exception as error:
-        raise HTTPException(status_code=400, detail=f"{number} is a invalid number of {type(number)} -> {error}")
+        raise HTTPException(status_code=400, detail=f"{number} is an invalid number of {type(number)} -> {error}")
 
 
 class User(BaseModel):
