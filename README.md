@@ -160,17 +160,21 @@ def create_user(
 
 ![Pydanctic Model for input validation v2](./resources/images/07_pydantic_model_input_validation_2.png)
 
--> All fields are being passed in the POST body
+-> All the fields are being passed in the POST body (full_name field is optional with default value `''` i.e. blank string)
 ![Pydanctic Model for input validation v3](./resources/images/08_pydantic_model_input_validation_3.png)
 
 ---
 
-## References
+### Error Patterns
 
-[How to run FastAPI app on a custom port](https://www.slingacademy.com/article/how-to-run-fastapi-on-a-custom-port/)
-[How to extract Query parameters in FastAPI](https://www.slingacademy.com/article/how-to-extract-query-parameters-in-fastapi/)
-
-## Error Patterns
-
-- A Database error occurred (If VPN ic not connected, Net is slow).
+- A Database error occurred (If VPN is not connected OR internet is too slow).
 - Detail not found (If wrong FastAPI app is running and we are hitting the API).
+- Not handling exception throws "Internal Server Error"
+
+### Notes
+- Not returning anything from endpoint returns null response
+
+### References
+
+- [How to run FastAPI app on a custom port](https://www.slingacademy.com/article/how-to-run-fastapi-on-a-custom-port/)
+- [How to extract Query parameters in FastAPI](https://www.slingacademy.com/article/how-to-extract-query-parameters-in-fastapi/)
