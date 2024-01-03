@@ -16,7 +16,6 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-
 @app.get('/')
 def hello_programmers():
     return {
@@ -42,7 +41,6 @@ from fastapi import FastAPI
 
 
 app = FastAPI()
-
 
 @app.get('/users')
 def hello_programmers(
@@ -76,7 +74,6 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-
 @app.get('/default-users')
 def hello_programmers(
         first_name: str = 'Default first name',
@@ -98,4 +95,45 @@ def hello_programmers(
 
 ![Query parameters with default values](./resources/images/04_query_parameters_with_default_values.png)
 
+---
 
+Handing Exceptions
+
+```python
+from fastapi import FastAPI, HTTPException
+
+
+app = FastAPI()
+
+@app.get('/validate')
+def validate_integer_numbers(
+        number: str
+    ):
+    try:
+        number = float(number) if '.' in number else int(number)
+        return {
+            "message": f"{number} is a valid number of {type(number)}"
+        } 
+    except Exception as error:
+        raise HTTPException(status_code=400, detail=f"{number} is a invalid number of {type(number)} -> {error}")
+```
+
+Handing Exceptions - valid response example
+
+![Handing Exceptions v1](./resources/images/05_handing_exceptions_1.png)
+---
+Handing Exceptions - Invalid response example
+![Handing Exceptions v2](./resources/images/05_handing_exceptions_2.png)
+
+
+---
+
+## References
+
+[How to run FastAPI app on a custom port](https://www.slingacademy.com/article/how-to-run-fastapi-on-a-custom-port/)
+[How to extract Query parameters in FastAPI](https://www.slingacademy.com/article/how-to-extract-query-parameters-in-fastapi/)
+
+## Error Patterns
+
+- A Database error occurred (If VPN ic not connected, Net is slow).
+- Detail not found (If wrong FastAPI app is running and we are hitting the API).
