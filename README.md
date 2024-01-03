@@ -34,7 +34,7 @@ def hello_programmers():
 
 ---
 
-> Query Parameters Example
+> Query Parameters
 
 ```python
 from fastapi import FastAPI
@@ -57,16 +57,16 @@ def hello_programmers(
     }
 ```
 
-Query Parameters Example
+Query Parameters
 
 ![Query Parameters Example](./resources/images/02_postman_query_parameters_example.png)
 
-Required Query Parameters Example (Automatic validations)
+Required Query Parameters (Automatic validations)
 ![Required Query Parameters Example](./resources/images/03_required_query_parameters.png)
 
 ---
 
-Query Parameters Example with defailt values
+Query Parameters with default values
 
 ```python
 from fastapi import FastAPI
@@ -118,13 +118,41 @@ def validate_integer_numbers(
         raise HTTPException(status_code=400, detail=f"{number} is a invalid number of {type(number)} -> {error}")
 ```
 
-Handing Exceptions - valid response example
+Handing Exceptions - valid response 
 
 ![Handing Exceptions v1](./resources/images/05_handing_exceptions_1.png)
 ---
-Handing Exceptions - Invalid response example
+Handing Exceptions - Invalid response 
 ![Handing Exceptions v2](./resources/images/05_handing_exceptions_2.png)
 
+---
+
+Pydantic Model for Input validation
+
+```python
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+
+class User(BaseModel):
+    first_name: str
+    last_name: str
+    full_name: str = '' # Skipping this entry will raise `ValueError: "User" object has no field "full_name" inside endpoint while setting -> user.full_name` 
+    username: str
+    age: int
+    city: str
+
+@app.post("/users/create/")
+def create_user(
+        user: User
+    ):
+    user.full_name = f"{user.first_name} {user.last_name}"
+    return user
+```
+
+![Example 1](./resources/images/pydantic_model_input_validation_1.png)
+![Example 2](./resources/images/pydantic_model_input_validation_2.png)
+![Example 3](./resources/images/pydantic_model_input_validation_3.png)
 
 ---
 
