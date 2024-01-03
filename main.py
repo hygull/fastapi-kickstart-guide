@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 
 
 app = FastAPI()
@@ -44,3 +44,18 @@ def hello_programmers(
             "city": city
         }
     }
+
+
+from fastapi import FastAPI, HTTPException
+
+@app.get('/validate')
+def validate_integer_numbers(
+        number: str
+    ):
+    try:
+        number = float(number) if '.' in number else int(number)
+        return {
+            "message": f"{number} is a valid number of {type(number)}"
+        } 
+    except Exception as error:
+        raise HTTPException(status_code=400, detail=f"{number} is a invalid number of {type(number)} -> {error}")
