@@ -154,14 +154,14 @@ def create_user(
 ```
 -> 2 fields are missing in the POST body
 
-![Pydanctic Model for input validation v1](./resources/images/pydantic_model_input_validation_1.png)
+![Pydanctic Model for input validation v1](./resources/images/06_pydantic_model_input_validation_1.png)
 
 -> 1 field is missing in the POST body
 
-![Pydanctic Model for input validation v2](./resources/images/pydantic_model_input_validation_2.png)
+![Pydanctic Model for input validation v2](./resources/images/07_pydantic_model_input_validation_2.png)
 
 -> All fields are being passed in the POST body
-![Pydanctic Model for input validation v3](./resources/images/pydantic_model_input_validation_3.png)
+![Pydanctic Model for input validation v3](./resources/images/08_pydantic_model_input_validation_3.png)
 
 ---
 
