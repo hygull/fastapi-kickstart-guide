@@ -169,10 +169,21 @@ def create_user(
 
 - A Database error occurred (If VPN is not connected OR internet is too slow).
 - Detail not found (If wrong FastAPI app is running and we are hitting the API).
-- Not handling exception throws "Internal Server Error"
+- Internal Server Error (Not handling an exception inside the endpoint function throws this).
 
-### Notes
-- Not returning anything from endpoint returns null response
+### Notes 
+
+- Not returning anything from endpoint returns null response.
+
+### API/FastAPI specific keywords
+
+- Path 
+- Route
+- Route definition
+- Endpoint
+- HTTP method/verb
+- Path parameters
+- Query parameters
 
 ### References
 
