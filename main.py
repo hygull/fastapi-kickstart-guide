@@ -76,3 +76,26 @@ def create_user(
     user.full_name = f"{user.first_name} {user.last_name}"
     return user
 
+
+class State(BaseModel):
+    blocks: int
+    pincode: int
+
+class City(BaseModel):
+    name: str
+    state: State
+    population: int
+    pincode: int
+
+@app.post("/cities/create")
+def create_city(
+        city: City
+    ):
+    return City
+
+
+
+
+
+
+
