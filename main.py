@@ -78,6 +78,7 @@ def create_user(
 
 
 class State(BaseModel):
+    name: str
     blocks: int
     pincode: int
 
@@ -91,11 +92,4 @@ class City(BaseModel):
 def create_city(
         city: City
     ):
-    return City
-
-
-
-
-
-
-
+    return city
