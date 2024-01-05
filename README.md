@@ -167,6 +167,8 @@ def create_user(
 
 **Nested POST Body**
 
+> Note: Here I have considered `blocks` as `no_of_blocks` and not the actual block instances. 
+
 ```python
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -193,6 +195,36 @@ def create_city(
 -> Nested POST body: State is nested inside City
 
 ![Nested POST body](./resources/images/09_nested_post_body_example.png)
+
+---
+
+**POST bodyw with List of objects**
+
+```python
+from fastapi import FastAPI
+from typing import List
+
+
+class Fruit(BaseModel):
+    name: str 
+    colour: str
+
+class Tree(BaseModel):
+    name: str
+    branches: int
+    leaves: int
+    fruits: List[Fruit]
+
+@app.post("/trees/create")
+def create_tree(
+        tree: Tree
+    ):
+    return tree
+```
+
+-> POST bosy with list of objects (List of Fruits objects inside Tree object)
+
+![POST bosy with list of objects](./resources/images/10_post_body_with_list_of_objects.png)
 
 ---
 

@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-
+from typing import List
 
 app = FastAPI()
 
@@ -93,3 +93,20 @@ def create_city(
         city: City
     ):
     return city
+
+
+class Fruit(BaseModel):
+    name: str 
+    colour: str
+
+class Tree(BaseModel):
+    name: str
+    branches: int
+    leaves: int
+    fruits: List[Fruit]
+
+@app.post("/trees/create")
+def create_tree(
+        tree: Tree
+    ):
+    return tree
