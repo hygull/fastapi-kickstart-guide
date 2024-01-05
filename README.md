@@ -165,6 +165,37 @@ def create_user(
 
 ---
 
+**Nested POST Body**
+
+```python
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+
+class State(BaseModel):
+    name: str
+    blocks: int
+    pincode: int
+
+class City(BaseModel):
+    name: str
+    state: State
+    population: int
+    pincode: int
+
+@app.post("/cities/create")
+def create_city(
+        city: City
+    ):
+    return city
+```
+
+-> Nested POST body: State is nested inside City
+
+![Nested POST body](./resources/images/09_nested_post_body_example.png)
+
+---
+
 ### Error Patterns
 
 - A Database error occurred (If VPN is not connected OR internet is too slow).
