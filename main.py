@@ -1,6 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List
+from enum import Enum
+
 
 app = FastAPI()
 
@@ -110,3 +112,22 @@ def create_tree(
         tree: Tree
     ):
     return tree
+
+
+class FruitName(str, Enum):
+    default = 'fruit'
+    favourite = 'favourite fruit'
+    healthy = 'healthy fruit'
+
+
+@app.post('/fruits/create')
+def create_fruit(
+        name: str, 
+        nickname: FruitName
+    ):
+    return {
+        "fruit": {
+            "name": name,
+            "nickname": nickname
+        }
+    }
