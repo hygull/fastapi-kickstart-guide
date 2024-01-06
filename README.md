@@ -198,7 +198,7 @@ def create_city(
 
 ---
 
-**POST bodyw with List of objects**
+**POST body with List of objects**
 
 ```python
 from fastapi import FastAPI
@@ -222,9 +222,42 @@ def create_tree(
     return tree
 ```
 
--> POST bosy with list of objects (List of Fruits objects inside Tree object)
+-> POST body with list of objects (List of Fruits objects inside the Tree object)
 
-![POST bosy with list of objects](./resources/images/10_post_body_with_list_of_objects.png)
+![POST body with list of objects](./resources/images/10_post_body_with_list_of_objects.png)
+
+---
+
+**Using Enum for input validation**
+
+```python
+class FruitName(str, Enum):
+    default = 'fruit'
+    favourite = 'favourite fruit'
+    healthy = 'healthy fruit'
+
+
+@app.post('/fruits/create')
+def create_fruit(
+        name: str, 
+        nickname: FruitName
+    ):
+    return {
+        "fruit": {
+            "name": name,
+            "nickname": nickname
+        }
+    }
+```
+
+-> If wrong value is passed for Enum data type
+
+![If wrong value is passed for Enum data type](./resources/images/11_enum_input_validation_error_example.png)
+
+
+-> If correct values are passed for Enum data type
+
+![If correct values are passed for Enum data type](./resources/images/12_enum_input_validation_success_example.png)
 
 ---
 
