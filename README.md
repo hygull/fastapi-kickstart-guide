@@ -261,6 +261,68 @@ def create_fruit(
 
 ---
 
+**Using Enum and Pydantic Model together**
+
+```python
+class PlatformType(str, Enum):
+    search_engine = 'Search Engine'
+    social_media = 'Social Media'
+
+
+class PlatformInfo(BaseModel):
+    name: str 
+    type: PlatformType
+    nickname: str
+
+
+class Platform(Enum):
+    instagram = PlatformInfo(
+        name="Instagram", 
+        type=PlatformType.social_media, 
+        nickname=f'Instagram {PlatformType.social_media.value}'
+    )
+    facebook = PlatformInfo(
+        name="Facebook", 
+        type=PlatformType.social_media, 
+        nickname=f'Facebook {PlatformType.social_media.value}'
+    )
+    google = PlatformInfo(
+        name="Google", 
+        type=PlatformType.search_engine, 
+        nickname=f'Google {PlatformType.search_engine.value}'
+    )
+
+class PlatformRequest(BaseModel):
+    platform: str
+
+
+@app.post("/platforms/create")
+def create_platform(
+        platform_request: PlatformRequest
+    ):
+    try:
+        platform = Platform[platform_request.platform].value.dict()
+    except KeyError as error:
+        # Order is status_code, detail -> if you do not specify kwarg names then using 
+        #   `raise HTTPException(f'Invalid key {platform_request.platform}', status_code=400)`
+        # will throw
+        #   `TypeError: HTTPException.__init__() got multiple values for argument 'status_code'`
+        raise HTTPException(
+            detail=f'Invalid key {platform_request.platform}', 
+            status_code=400
+        ) 
+
+    return {
+        "platform": platform
+    }
+```
+
+-> Using Enum and Pydantic Model together
+
+![Using Enum and Pydantic Model together](./resources/images/13_platform_enum_pydantic_model_example.png)
+
+---
+
 ### Error Patterns
 
 - A Database error occurred (If VPN is not connected OR internet is too slow).
