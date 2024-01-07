@@ -84,6 +84,7 @@ class State(BaseModel):
     blocks: int
     pincode: int
 
+
 class City(BaseModel):
     name: str
     state: State
@@ -106,6 +107,7 @@ class Tree(BaseModel):
     branches: int
     leaves: int
     fruits: List[Fruit]
+
 
 @app.post("/trees/create")
 def create_tree(
@@ -130,4 +132,58 @@ def create_fruit(
             "name": name,
             "nickname": nickname
         }
+    }
+
+
+class PlatformType(str, Enum):
+    search_engine = 'Search Engine'
+    social_media = 'Social Media'
+
+
+class PlatformInfo(BaseModel):
+    name: str 
+    type: PlatformType
+    nickname: str
+
+
+class Platform(Enum):
+    instagram = PlatformInfo(
+        name="Instagram", 
+        type=PlatformType.social_media, 
+        nickname=f'Instagram {PlatformType.social_media.value}'
+    )
+    facebook = PlatformInfo(
+        name="Facebook", 
+        type=PlatformType.social_media, 
+        nickname=f'Facebook {PlatformType.social_media.value}'
+    )
+    google = PlatformInfo(
+        name="Google", 
+        type=PlatformType.search_engine, 
+        nickname=f'Google {PlatformType.search_engine.value}'
+    )
+
+
+class PlatformRequest(BaseModel):
+    platform: str
+
+
+@app.post("/platforms/create")
+def create_platform(
+        platform_request: PlatformRequest
+    ):
+    try:
+        platform = Platform[platform_request.platform].value.dict()
+    except KeyError as error:
+        # Order is status_code, detail -> if you do not specify kwarg names then using 
+        #   `raise HTTPException(f'Invalid key {platform_request.platform}', status_code=400)`
+        # will throw
+        #   `TypeError: HTTPException.__init__() got multiple values for argument 'status_code'`
+        raise HTTPException(
+            detail=f'Invalid key {platform_request.platform}', 
+            status_code=400
+        ) 
+
+    return {
+        "platform": platform
     }
