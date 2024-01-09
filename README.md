@@ -323,6 +323,68 @@ def create_platform(
 
 ---
 
+**Installing Custom Exceptions: Customising Exceptions**
+
+```python
+# Install custom exceptions
+class CustomFastAPIHttpException(HTTPException):
+    def __init__(self, status_code: str, detail: str, custom_message: str):
+        '''
+            In case we skip -> `super().__init__(status_code=status_code, detail=detail)`
+            We will see:
+                `AttributeError: 'CustomFastAPIHttpException' object has no attribute 'status_code'`
+        '''
+        super().__init__(status_code=status_code, detail=detail)
+        self.custom_message = custom_message
+
+
+@app.exception_handler(CustomFastAPIHttpException)
+async def custom_exception_handler(
+    request: Request,
+    exception: CustomFastAPIHttpException
+):
+    return JSONResponse(
+        status_code=exception.status_code,
+        content= {
+            "message": "Something went wrong!",
+            "custom_message": exception.custom_message,
+            "detail": exception.detail  
+        }
+    )
+
+
+@app.get("/plans/")
+def get_plans(count: int):
+    try:
+        assert count != 0, "Plans count should be > 0"
+        return {
+            "plans": [
+                { 
+                    "name": f"Plan {plan_no}", 
+                    "created_at": datetime.now(),
+                    "updated_at": datetime.now()
+                }
+                for plan_no in range(1, count + 1)
+            ]
+        }
+    except Exception as error:
+        raise CustomFastAPIHttpException(
+            status_code=400,
+            detail=f'There is some issue while processing the request -> {error}',
+            custom_message='Please check, this might be due to wrong input or code BUG.'
+        )
+```
+
+-> Simple Plans list example using custom exceptions 
+
+![Simple Plans list example using custom exceptions ](./resources/images/14_custom_exception_message_plans_example.png)
+
+-> Customising the exception message (Throw custom error message)
+
+![Simple Plans list example using custom exceptions ](./resources/images/15_throw_custom_exception_message_plans_example.png)
+
+---
+
 ### Error Patterns
 
 - A Database error occurred (If VPN is not connected OR internet is too slow).
@@ -347,3 +409,4 @@ def create_platform(
 
 - [How to run FastAPI app on a custom port](https://www.slingacademy.com/article/how-to-run-fastapi-on-a-custom-port/)
 - [How to extract Query parameters in FastAPI](https://www.slingacademy.com/article/how-to-extract-query-parameters-in-fastapi/)
+- [Handling exceptions](https://fastapi.tiangolo.com/tutorial/handling-errors/)
