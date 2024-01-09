@@ -193,38 +193,35 @@ def create_platform(
     }
 
 
-
+# Install custom exceptions
 class CustomFastAPIHttpException(HTTPException):
-    def __init__(self, status_code: int, detail: str, custom_message: str):
+    def __init__(self, status_code: str, detail: str, custom_message: str):
+        '''
+            In case we skip -> `super().__init__(status_code=status_code, detail=detail)`
+            We will see:
+                `AttributeError: 'CustomFastAPIHttpException' object has no attribute 'status_code'`
+        '''
         super().__init__(status_code=status_code, detail=detail)
         self.custom_message = custom_message
 
-    # def as_response(self):
-    #     return JSONResponse(
-    #         status_code=self.status_code,
-    #         content= {
-    #             "detail": self.detail,
-    #             "custom_message": self.custom_message
-    #         }
-    #     )
 
-@app.exception_handler(RequestValidationError)
-async def validation_exception_handler(
+@app.exception_handler(CustomFastAPIHttpException)
+async def custom_exception_handler(
     request: Request,
-    exception: RequestValidationError
+    exception: CustomFastAPIHttpException
 ):
     return JSONResponse(
         status_code=exception.status_code,
         content= {
-            "detail": exception.errors()
+            "message": "Something went wrong!",
+            "custom_message": exception.custom_message,
+            "detail": exception.detail  
         }
     )
 
 
 @app.get("/plans/")
-def get_plans(
-        count: int
-    ):
+def get_plans(count: int):
     try:
         assert count != 0, "Plans count should be > 0"
         return {
@@ -241,5 +238,5 @@ def get_plans(
         raise CustomFastAPIHttpException(
             status_code=400,
             detail=f'There is some issue while processing the request -> {error}',
-            custom_message='Please check, this might be due to wrong input or code BUG'
+            custom_message='Please check, this might be due to wrong input or code BUG.'
         )
