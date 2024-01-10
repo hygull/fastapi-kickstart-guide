@@ -245,7 +245,7 @@ async def get_plans(count: int):
 class Item(BaseModel):
     name: str
     nickname: Union[str, None] = None
-    price: [int, float] = 0
+    price: Union[int, float] = 0
 
 
 @app.post("/items/")
@@ -253,5 +253,5 @@ async def create_item(
     item: Item
 ):
     return {
-        "item": Item
+        "item": item
     }

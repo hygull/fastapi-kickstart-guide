@@ -390,11 +390,19 @@ def get_plans(count: int):
 
 ---
 
+**Using Union from typing**
+
 ```python
+from fastapi import FastAPI
+from typing import Union
+
+app = FastAPI(app)
+
+
 class Item(BaseModel):
     name: str
     nickname: Union[str, None] = None
-    price: [int, float] = 0
+    price: Union[int, float] = 0
 
 
 @app.post("/items/")
@@ -402,9 +410,18 @@ async def create_item(
     item: Item
 ):
     return {
-        "item": Item
+        "item": item
     }
 ```
+
+Using Union from typing module (Default nickname & price) - str or None & int or float 
+
+-> [Using Union from typing module (Default nickname & price) - str or None & int or float ](./resources/images/16_items_union_default_nickname_price_example.png)
+
+Using Union from typing module (All values)
+
+-> [Using Union from typing module (Default price) - int or float ](./resources/images/17_items_union_example_all_values.png)
+
 
 ---
 
@@ -413,6 +430,7 @@ async def create_item(
 - A Database error occurred (If VPN is not connected OR internet is too slow).
 - Detail not found (If wrong FastAPI app is running and we are hitting the API).
 - Internal Server Error (Not handling an exception inside the endpoint function throws this).
+- If you got this error by calling handler(<some type>) within `__get_pydantic_core_schema__` then you likely need to call `handler.generate_schema(<some type>)` since we do not call `__get_pydantic_core_schema__` on `<some type>` otherwise to avoid infinite recursion (If you define `price: [int, float] = 0` instead of `price: Union[int, float] = 0` inside Pydantic class)
 
 ### Notes 
 
