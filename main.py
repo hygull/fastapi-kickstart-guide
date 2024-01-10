@@ -4,8 +4,8 @@ from typing import List
 from enum import Enum
 from datetime import datetime
 from fastapi.responses import JSONResponse
-from fastapi.exceptions import RequestValidationError
 from fastapi.requests import Request
+from typing import Union
 
 
 app = FastAPI()
@@ -221,7 +221,7 @@ async def custom_exception_handler(
 
 
 @app.get("/plans/")
-def get_plans(count: int):
+async def get_plans(count: int):
     try:
         assert count != 0, "Plans count should be > 0"
         return {
@@ -240,3 +240,18 @@ def get_plans(count: int):
             detail=f'There is some issue while processing the request -> {error}',
             custom_message='Please check, this might be due to wrong input or code BUG.'
         )
+
+
+class Item(BaseModel):
+    name: str
+    nickname: Union[str, None] = None
+    price: [int, float] = 0
+
+
+@app.post("/items/")
+async def create_item(
+    item: Item
+):
+    return {
+        "item": Item
+    }

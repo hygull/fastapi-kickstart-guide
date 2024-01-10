@@ -326,6 +326,11 @@ def create_platform(
 **Installing Custom Exceptions: Customising Exceptions**
 
 ```python
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import JSONResponse
+from fastapi.requests import Request
+
+
 # Install custom exceptions
 class CustomFastAPIHttpException(HTTPException):
     def __init__(self, status_code: str, detail: str, custom_message: str):
