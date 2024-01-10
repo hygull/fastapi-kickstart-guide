@@ -390,6 +390,24 @@ def get_plans(count: int):
 
 ---
 
+```python
+class Item(BaseModel):
+    name: str
+    nickname: Union[str, None] = None
+    price: [int, float] = 0
+
+
+@app.post("/items/")
+async def create_item(
+    item: Item
+):
+    return {
+        "item": Item
+    }
+```
+
+---
+
 ### Error Patterns
 
 - A Database error occurred (If VPN is not connected OR internet is too slow).
