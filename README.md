@@ -414,13 +414,13 @@ async def create_item(
     }
 ```
 
-Using Union from typing module (Default nickname & price) - str or None & int or float 
+-> Using Union from typing module (Default nickname & price) - str or None & int or float 
 
--> [Using Union from typing module (Default nickname & price) - str or None & int or float ](./resources/images/16_items_union_default_nickname_price_example.png)
+[Using Union from typing module (Default nickname & price) - str or None & int or float ](./resources/images/16_items_union_default_nickname_price_example.png)
 
-Using Union from typing module (All values)
+-> Using Union from typing module (All values)
 
--> [Using Union from typing module (Default price) - int or float ](./resources/images/17_items_union_example_all_values.png)
+![Using Union from typing module (Default price) - int or float ](./resources/images/17_items_union_example_all_values.png)
 
 
 ---
@@ -451,3 +451,6 @@ Using Union from typing module (All values)
 - [How to run FastAPI app on a custom port](https://www.slingacademy.com/article/how-to-run-fastapi-on-a-custom-port/)
 - [How to extract Query parameters in FastAPI](https://www.slingacademy.com/article/how-to-extract-query-parameters-in-fastapi/)
 - [Handling exceptions](https://fastapi.tiangolo.com/tutorial/handling-errors/)
+- [Real Python - FastAPI Python Web APIs](https://realpython.com/fastapi-python-web-apis/)
+- [FastAPI - Excellent examples](https://devdocs.io/fastapi/)
+- [FastAPI Tutirial in Visual Studio Code](https://code.visualstudio.com/docs/python/tutorial-fastapi)
