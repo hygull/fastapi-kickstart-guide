@@ -435,6 +435,8 @@ async def create_item(
 ### Notes 
 
 - Not returning anything from endpoint returns null response.
+- Raising an HttpException returns a response with detail in FastAPI
+- Returning a BaseModel instance returns a JSON response in FastAPI 
 
 ### API/FastAPI specific keywords
 
@@ -445,6 +447,8 @@ async def create_item(
 - HTTP method/verb
 - Path parameters
 - Query parameters
+- Body parameters
+- Dependency Injection
 
 ### References
 
