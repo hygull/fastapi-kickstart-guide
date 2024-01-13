@@ -416,7 +416,7 @@ async def create_item(
 
 -> Using Union from typing module (Default nickname & price) - str or None & int or float 
 
-[Using Union from typing module (Default nickname & price) - str or None & int or float ](./resources/images/16_items_union_default_nickname_price_example.png)
+![Using Union from typing module (Default nickname & price) - str or None & int or float ](./resources/images/16_items_union_default_nickname_price_example.png)
 
 -> Using Union from typing module (All values)
 
