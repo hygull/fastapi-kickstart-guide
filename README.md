@@ -450,6 +450,10 @@ async def create_item(
 - Body parameters
 - Dependency Injection
 
+### ChatGPT Notes
+
+[How to connect to DB in FastAPI?](./docs/chatgpt_notes/db_connection.md)
+
 ### References
 
 - [How to run FastAPI app on a custom port](https://www.slingacademy.com/article/how-to-run-fastapi-on-a-custom-port/)
