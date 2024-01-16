@@ -452,7 +452,8 @@ async def create_item(
 
 ### ChatGPT Notes
 
-[How to connect to DB in FastAPI?](./docs/chatgpt_notes/db_connection.md)
+- [How to connect to DB in FastAPI?](./resources/docs/chatgpt_notes/db_connection.md)
+- [How to perform CRUD operations using FastAPI?](./resources/docs/chatgpt_notes/crud_operations.md)
 
 ### References
 
