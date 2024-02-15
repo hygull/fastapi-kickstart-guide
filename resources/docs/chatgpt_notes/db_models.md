@@ -1,4 +1,4 @@
-## (Q1) Some examples of Fast API-based CRUD operations, which use Pydantic models in examples!
+## (Q1) Do you have some examples of Fast API-based CRUD operations, which use Pydantic models in examples!
 
 Sure, here are some examples of FastAPI-based CRUD operations using Pydantic models:
 

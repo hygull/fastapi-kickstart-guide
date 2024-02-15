@@ -1,4 +1,4 @@
-## Do not you think the DB migrations step here after we defined Model?
+## What are the steps for DB migrations using alembic?
 
 Yes, you're correct. After defining the SQLAlchemy models, it's essential to perform database migrations to create the corresponding tables in the database. This step ensures that the database schema matches the defined models.
 

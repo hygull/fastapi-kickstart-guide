@@ -1,4 +1,4 @@
-## Can you show me real JOIN operations where we explicitly use JOIN queries in FastAPI?
+## Do you have any JOIN operations related examples where we explicitly use JOIN queries in FastAPI?
 
 Certainly! Let's consider an example where we have two tables: User and Post. Each user can have multiple posts, and there's a foreign key relationship between the two tables. We'll perform a JOIN operation to retrieve all posts along with their corresponding user information.
 

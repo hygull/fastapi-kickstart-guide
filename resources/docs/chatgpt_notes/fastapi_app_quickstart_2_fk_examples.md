@@ -1,4 +1,4 @@
-## Show some JOIN examples as well using the Post model (Post here I mean the posts created by user -> id, title, caption, etc.)!
+## Is there any JOIN examples as well using the Post model (Post here I mean the posts created by user -> id, title, caption, etc.)!
 
 
 Certainly! Let's extend the example to include a Post model and demonstrate some JOIN examples:
