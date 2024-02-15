@@ -12,7 +12,7 @@ pip install fastapi uvicorn sqlalchemy databases[postgresql]
 
 Create a Python file named models.py and define your SQLAlchemy models. For example:
 
-```bash
+```python
 from sqlalchemy import Column, Integer, String, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -64,7 +64,7 @@ alembic upgrade head
 
 Create a Python file named main.py and define your FastAPI app. For example:
 
-```bash
+```python
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 import models
