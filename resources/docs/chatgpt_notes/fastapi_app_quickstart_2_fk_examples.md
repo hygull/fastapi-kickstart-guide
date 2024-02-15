@@ -44,7 +44,7 @@ class User(Base):
 
 Generate a new migration and apply it to update the database schema to include the Post model.
 
-Querying with JOINs:
+**Querying with JOINs:**
 Here are some examples of querying with JOINs in FastAPI:
 
 ```python
