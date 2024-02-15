@@ -18,9 +18,9 @@ pip install alembic
 alembic init alembic
 ```
 
-**Configure Alembic:** Edit the alembic.ini file to configure the database connection URL.
+**Configure Alembic:** Edit the **alembic.ini** file to configure the database connection URL.
 
-Define the Migration Script: After defining your SQLAlchemy models, generate a migration script with Alembic by running:
+**Define the Migration Script:** After defining your SQLAlchemy models, generate a migration script with Alembic by running:
 
 ```bash
 alembic revision --autogenerate -m "Initial migration"
